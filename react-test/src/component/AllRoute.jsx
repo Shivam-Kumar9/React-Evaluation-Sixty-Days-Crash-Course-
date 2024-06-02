@@ -10,7 +10,7 @@ export default function AllRoutes(){
     <Routes>
         <Route path="/Home" element={<Home/>} />
         <Route path="/Login" element={<Login/>} />
-        <Route path="/Product-Details" element={<Product/>}/>
+        <Route path="/Product-Details/:id" element={<Product/>}/>
     </Routes>
     </>)
 }

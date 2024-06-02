@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react"
+import axios from "axios"
+import {Link} from 'react-router-dom'
 
 export default function Home(){
     const [data,setData] = useState([])
@@ -13,7 +15,6 @@ export default function Home(){
                 url : 'https://fakestoreapi.com/products'
             })
             setData(res?.data)
-            console.log(res.data);
             setLoading(false)
             
         }
@@ -36,7 +37,13 @@ export default function Home(){
      }
 
     return(<><h1>Home page</h1>
-    
-    
+       
+           {data.map(product=>(
+            <div key={product.id} style={{border:'2px solid'}}>
+               <h2>Title : {product.title}</h2>
+                <h3>Category : {product.category}</h3> 
+                <Link to='/Product-Details'>More Details...</Link>
+            </div>
+           ))} 
     </>)
 }
