@@ -1,44 +1,61 @@
-import {useState, useEffect} from 'react'
-import axios  from 'axios'
+import {useState} from 'react'
+import axios from 'axios' 
+
+ 
+
 
 export default function Login(){
-     const [isAuthenticated,setIsAuthenticated] = useState(false)
-     const [token, setToken]= useState(null)
-     const [email, setEmail] = useState(null)
-     const [password,setPassword] = useState(null) 
-      
-      
-      
-     
-     function handleChange(e){ 
-        const {name,value} = e.target
-        var prevInput = { ...prevInput, 
-            [name] : value }
-        setForm(prevInput)
-     }
-       
-     function handleSubmit(e){
-       e.preventDefault()
-       
-       axios({
-        method:"post",
-        url: 'https://reqres.in/api/login',
-        data : form
-       }).then((res)=>{
-        
-       })
-        
-     }  
+
+    const [userInput, setUserInput] = useState({
+        email : '',
+        password : ''
+      })
+ 
+    function handlechange(e){
+        const { name , value} = e.target
+        var inputs = { ...userInput ,
+             [name] : value }
+        setUserInput(inputs)
+        }
+    function handleSubmit(e){
+        e.preventDefault()
+        console.log(userInput)
+
+        axios({
+            method : "post",
+            url    : 'https://reqres.in/api/login',
+            data : userInput,
+        }).then((res)=>{
+            console.log(res?.data.token)
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+       ;
+    }    
+
+     const {email , password } = userInput
     return(<>
-       
-      
-      <label >Email : 
-        <input type='text' placeholder='Enter email' value={email}  onChange={handleChange}/>
-       </label>
-       <label>Password : 
-        <input type="text" placeholder='Enter password' name='password' value={password} onChange={handleChange}/>
-       </label>
-       <input type="submit" name='submit'/>
      
+     <h1>login page</h1>
+
+     <form onSubmit={handleSubmit}>
+      <br />
+      <br />
+      <label> Email :  
+      <input type="text" name='email' value={email}  onChange={handlechange}  placeholder='enter email' />
+      <br /> 
+      <br />
+      <label>Password : 
+        <input type="text" name='password' value={password} onChange={handlechange} placeholder='enter password' />
+      </label>
+      <br />
+      <br />
+      <input type='submit' name='submit'/>
+        </label>     
+          
+    </form>
     </>)
 }
+
+// const {email, first_name, last_name} = getdata
