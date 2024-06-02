@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { Card, CardBody,  Stack, Heading, Text,  Button, } from '@chakra-ui/react'
 
 
-
 export default function ProductCard({ ...data }) {
   // console.log(data);
 
@@ -33,3 +32,4 @@ export default function ProductCard({ ...data }) {
     </Link>
   )
 }
+ // product card page done 

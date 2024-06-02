@@ -112,3 +112,4 @@ const addToCart = ()=>{
     </Container>
   )
 }
+//product details

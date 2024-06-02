@@ -13,10 +13,11 @@ const logOut = ()=>{
     setauthState({ isAuthenticated: false, token: null, email: null })
 }
 
-
   return (
    <Authcontext.Provider value={{authState,login,logOut}}>
     {children}
    </Authcontext.Provider>
   )
 }
+
+// auth context part

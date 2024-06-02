@@ -17,5 +17,7 @@ export default function Nevbar() {
                 <Button >Logout</Button>
             </HStack>
         </Flex>
-    )
+    ) 
 }
+
+// Navbar done 

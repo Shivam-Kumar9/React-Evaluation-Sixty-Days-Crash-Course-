@@ -38,7 +38,7 @@ export default function Home() {
 
       <Products filtervalue = {filtervalue} sortorder={sortorder}/>
     </Container>
-    
+  
   : 
   <Container  maxW={'container.md'} mt={10}>
     <HStack>
@@ -52,3 +52,5 @@ export default function Home() {
     </>
   )
 }
+
+// home page done 

@@ -72,7 +72,6 @@ const hendelLogin = ()=>{
 }
 
 
-
   return (
     <Container maxW={'xl'} my={10}>
         <Heading align={'center'} my={8}>Login Now</Heading>
@@ -104,3 +103,4 @@ const hendelLogin = ()=>{
 
   )
 }
+// login page done 

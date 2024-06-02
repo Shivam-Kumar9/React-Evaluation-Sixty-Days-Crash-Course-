@@ -1,7 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from '../Pages/Home'
- 
 import Login from '../Pages/Login'
 import ProductDetail from '../Pages/ProductDetail'
 import PrivateRoute from './PrivateRoute'
@@ -20,3 +19,4 @@ export default function AllRouts() {
    </Routes>
   )
 }
+ // all route done 
