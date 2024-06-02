@@ -12,9 +12,10 @@ export default function Home(){
         try{
             const res = await axios({
                 method: 'get',
-                url : 'https://fakestoreapi.com/products'
+                url : 'https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-products'
             })
-            setData(res?.data)
+            setData(res?.data.data)
+             
             setLoading(false)
             
         }
@@ -39,9 +40,10 @@ export default function Home(){
     return(<><h1>Home page</h1>
        
            {data.map(product=>(
-            <div key={product.id} style={{border:'2px solid'}}>
+            <div key={product.id} style={{border:'2px solid', padding:'10px'}}>
                <h2>Title : {product.title}</h2>
                 <h3>Category : {product.category}</h3> 
+                <h3>Price : {product.price}</h3>
                 <Link to='/Product-Details'>More Details...</Link>
             </div>
            ))} 

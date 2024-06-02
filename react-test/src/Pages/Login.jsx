@@ -2,25 +2,36 @@ import {useState, useEffect} from 'react'
 import axios  from 'axios'
 
 export default function Login(){
-     
-     const [form,setForm] = useState({
-        email   : '',
-        password: ''})
-     const [loding,setLoading] = useState(false)
-     const [error,setError] = useState(false)
+     const [isAuthenticated,setIsAuthenticated] = useState(false)
+     const [token, setToken]= useState(null)
+     const [email, setEmail] = useState(null)
+     const [password,setPassword] = useState(null) 
       
-     const{email, password} = form
+      
+      
      
      function handleChange(e){ 
-        
+        const {name,value} = e.target
+        var prevInput = { ...prevInput, 
+            [name] : value }
+        setForm(prevInput)
      }
        
      function handleSubmit(e){
-
+       e.preventDefault()
+       
+       axios({
+        method:"post",
+        url: 'https://reqres.in/api/login',
+        data : form
+       }).then((res)=>{
+        
+       })
+        
      }  
     return(<>
        
-      <form  onSubmit={handleSubmit}> 
+      
       <label >Email : 
         <input type='text' placeholder='Enter email' value={email}  onChange={handleChange}/>
        </label>
@@ -28,6 +39,6 @@ export default function Login(){
         <input type="text" placeholder='Enter password' name='password' value={password} onChange={handleChange}/>
        </label>
        <input type="submit" name='submit'/>
-      </form>
+     
     </>)
 }
