@@ -1,10 +1,21 @@
-import {Link} from 'react-router-dom'
+import { Button, Flex, HStack, Text } from '@chakra-ui/react'
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { Authcontext } from '../Context/Authcontext'
 
-export default function Navbar(){
-
-    return(<div style={{display:'flex', alignItems:'center',justifyContent:'space-evenly',padding:"10px",backgroundColor:"gray"}}>
-       <Link to='/Home'>Home</Link>
-       <Link to='/Login'>Login</Link>
-        
-    </div>)
+export default function Nevbar() {
+    let { authState : {isAuthenticated,email} } = useContext(Authcontext)
+   
+    return (
+        <Flex py={10} px={5} bg={'lightgray'} justifyContent={'space-between'}>
+            <HStack >
+                <Text>{isAuthenticated ? email : "Please Login Now"}</Text>
+            </HStack>
+            <HStack spacing={10}>
+                <Link to={'/'}>Home</Link>
+                <Link to={'/login'}>login</Link>
+                <Button >Logout</Button>
+            </HStack>
+        </Flex>
+    )
 }
